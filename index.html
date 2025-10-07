@@ -14,12 +14,27 @@
     <style>
         /* --- Variáveis de Customização --- */
         :root {
-            --cor-sidebar: #2c3e50; /* Azul ardósia escuro */
+            /* TEMA CLARO (PADRÃO) */
+            --cor-sidebar: #2c3e50;
             --cor-principal: #ffffff;
-            --cor-destaque: #1abc9c; /* Verde-água */
-            --cor-texto-sidebar: #ecf0f1; /* Cinza claro */
-            --cor-texto-principal: #34495e; /* Azul ardósia mais claro */
+            --cor-fundo: #f0f2f5;
+            --cor-destaque: #1abc9c;
+            --cor-texto-sidebar: #ecf0f1;
+            --cor-texto-principal: #34495e;
             --sombra-caixa: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ================================== */
+        /* ===== NOVAS CORES (DARK MODE) ==== */
+        /* ================================== */
+        body.dark-mode {
+            /* TEMA ESCURO */
+            --cor-sidebar: #1f2937; /* Um cinza mais escuro */
+            --cor-principal: #111827; /* Fundo principal quase preto */
+            --cor-fundo: #000000;
+            --cor-texto-sidebar: #d1d5db; /* Texto um pouco mais claro */
+            --cor-texto-principal: #d1d5db; /* Texto principal claro */
+            --sombra-caixa: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* --- Animações --- */
@@ -37,7 +52,9 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-principal);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .resume-container {
@@ -48,6 +65,7 @@
             border-radius: 10px;
             overflow: hidden;
             animation: fadeIn 1s ease-out;
+            transition: box-shadow 0.3s;
         }
 
         /* --- Barra Lateral (Sidebar) --- */
@@ -59,6 +77,55 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* ================================== */
+        /* ===== ESTILO DO BOTÃO DARK MODE == */
+        /* ================================== */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            width: 50px;
+        }
+        .theme-switch input {
+            display:none;
+        }
+        .slider {
+            background-color: #4f6a85;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 16px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 16px;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--cor-destaque);
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
         }
 
         .profile-pic {
@@ -68,6 +135,7 @@
             border: 5px solid var(--cor-destaque);
             object-fit: cover;
             margin-bottom: 20px;
+            margin-top: 40px; /* Espaço para o botão */
         }
 
         .sidebar h2 {
@@ -112,15 +180,17 @@
             background-color: var(--cor-principal);
             width: 65%;
             padding: 50px;
+            transition: background-color 0.3s;
         }
 
         .main-content h1, .main-content h2, .main-content h3, .main-content h4 {
             font-family: 'Montserrat', sans-serif;
+            color: var(--cor-texto-principal);
+            transition: color 0.3s;
         }
-
+        
         .main-content h1 {
             font-size: 3em;
-            color: var(--cor-sidebar);
             margin: 0;
         }
 
@@ -132,7 +202,6 @@
         }
 
         .main-content h2 {
-            color: var(--cor-sidebar);
             border-bottom: 2px solid var(--cor-destaque);
             padding-bottom: 10px;
             margin-top: 40px;
@@ -142,68 +211,51 @@
             margin-bottom: 30px;
         }
 
-        .experience-item h3 {
-            color: var(--cor-texto-principal);
-            margin: 0;
-        }
-        
-        .experience-item h4 {
-            color: #555;
-            font-weight: 700;
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-
-        .experience-item .periodo {
-            color: var(--cor-destaque);
-            font-weight: bold;
-            font-size: 0.9em;
-        }
-
         .experience-item ul {
             padding-left: 20px;
-            color: #555;
             margin-top: 5px;
         }
         
         /* --- Carrossel de Projetos (Swiper.js) --- */
         .swiper {
             width: 100%;
-            padding-bottom: 40px !important; /* Espaço para a paginação */
+            padding-bottom: 40px !important;
         }
         
         .swiper-slide {
-            background: #fff;
+            background: var(--cor-principal);
             padding: 25px;
             box-sizing: border-box;
             border-radius: 8px;
             box-shadow: var(--sombra-caixa);
-            border: 1px solid #eee;
+            border: 1px solid var(--cor-sidebar);
+            transition: background-color 0.3s, border 0.3s;
         }
 
-        .swiper-slide h4 {
-            color: var(--cor-sidebar);
-            margin-top: 0;
+        .swiper-slide h4, .swiper-slide p {
+            color: var(--cor-texto-principal);
+            transition: color 0.3s;
         }
         
         .swiper-slide .tags span {
-            background: #eee; color: var(--cor-destaque); padding: 5px 10px; border-radius: 5px; font-size: 0.8em; margin-right: 5px;
+            background: var(--cor-fundo); 
+            color: var(--cor-destaque); 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+            font-size: 0.8em; 
+            margin-right: 5px;
+            transition: background-color 0.3s;
         }
 
-        /* Customização dos controles do Swiper */
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: var(--cor-destaque) !important;
-        }
-
-        .swiper-pagination-bullet-active {
-            background-color: var(--cor-destaque) !important;
-        }
+        .swiper-button-next, .swiper-button-prev { color: var(--cor-destaque) !important; }
+        .swiper-pagination-bullet-active { background-color: var(--cor-destaque) !important; }
 
         /* --- Responsividade --- */
         @media (max-width: 992px) {
             .resume-container { flex-direction: column; margin: 0; }
             .sidebar, .main-content { width: 100%; box-sizing: border-box; }
+            .theme-switch-wrapper { top: 15px; right: 15px; }
+            .profile-pic { margin-top: 60px; }
         }
 
     </style>
@@ -212,7 +264,15 @@
 
     <div class="resume-container">
         <aside class="sidebar">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQE8H0IB2xDaew/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1673028271399?e=1762992000&v=beta&t=MTAF0b8JtMwL6tUUCm85p95QGffHarm16Kr9SHwVuag" alt="Foto de Perfil" class="profile-pic">
+        
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+            </div>
+        
+            <img src="foto-perfil.jpg" alt="Foto de Perfil" class="profile-pic">
             
             <div class="contact-info">
                 <h2>Contato</h2>
@@ -303,29 +363,55 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
+      // 1. Script do Carrossel (Swiper)
       const swiper = new Swiper('.swiper', {
-        // Ativa o loop contínuo
         loop: true,
-
-        // Configurações do Autoplay
         autoplay: {
-          delay: 2000, // 2000ms = 2 segundos
-          disableOnInteraction: false, // Continua o autoplay mesmo depois que o usuário interage
-          pauseOnMouseEnter: true, // Pausa o autoplay quando o mouse está sobre o carrossel
+          delay: 2500, // Aumentei um pouco para dar tempo de ler
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         },
-
-        // Adiciona os "pontinhos" de navegação
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
         },
-
-        // Adiciona as setas de navegação
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
       });
+
+      // ==================================
+      // ===== SCRIPT DO DARK MODE ADICIONADO ====
+      // ==================================
+      // 2. Script do Modo Escuro
+      const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+      const currentTheme = localStorage.getItem('theme');
+
+      // Verifica se há um tema salvo no armazenamento local
+      if (currentTheme) {
+          document.body.classList.add(currentTheme);
+        
+          if (currentTheme === 'dark-mode') {
+              toggleSwitch.checked = true;
+          }
+      }
+
+      // Função para trocar o tema
+      function switchTheme(e) {
+          if (e.target.checked) {
+              document.body.classList.add('dark-mode');
+              localStorage.setItem('theme', 'dark-mode'); // Salva a preferência
+          }
+          else {
+              document.body.classList.remove('dark-mode');
+              localStorage.setItem('theme', 'light-mode'); // Salva a preferência
+          }    
+      }
+
+      // Adiciona o "escutador" de eventos para o clique no botão
+      toggleSwitch.addEventListener('change', switchTheme, false);
+
     </script>
 
 </body>
