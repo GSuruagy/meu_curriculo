@@ -14,7 +14,6 @@
     <style>
         /* --- Variáveis de Customização --- */
         :root {
-            /* TEMA CLARO (PADRÃO) */
             --cor-sidebar: #2c3e50;
             --cor-principal: #ffffff;
             --cor-fundo: #f0f2f5;
@@ -23,256 +22,64 @@
             --cor-texto-principal: #34495e;
             --sombra-caixa: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-
-        /* ================================== */
-        /* ===== NOVAS CORES (DARK MODE) ==== */
-        /* ================================== */
         body.dark-mode {
-            /* TEMA ESCURO */
-            --cor-sidebar: #1f2937; /* Um cinza mais escuro */
-            --cor-principal: #111827; /* Fundo principal quase preto */
+            --cor-sidebar: #1f2937;
+            --cor-principal: #111827;
             --cor-fundo: #000000;
-            --cor-texto-sidebar: #d1d5db; /* Texto um pouco mais claro */
-            --cor-texto-principal: #d1d5db; /* Texto principal claro */
+            --cor-texto-sidebar: #d1d5db;
+            --cor-texto-principal: #d1d5db;
             --sombra-caixa: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-
-        /* --- Animações --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Estilos Gerais --- */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto-principal);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .resume-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            display: flex;
-            box-shadow: var(--sombra-caixa);
-            border-radius: 10px;
-            overflow: hidden;
-            animation: fadeIn 1s ease-out;
-            transition: box-shadow 0.3s;
-        }
-
-        /* --- Barra Lateral (Sidebar) --- */
-        .sidebar {
-            background-color: var(--cor-sidebar);
-            color: var(--cor-texto-sidebar);
-            width: 35%;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* ================================== */
-        /* ===== ESTILO DO BOTÃO DARK MODE == */
-        /* ================================== */
-        .theme-switch-wrapper {
-            display: flex;
-            align-items: center;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        .theme-switch {
-            display: inline-block;
-            height: 24px;
-            position: relative;
-            width: 50px;
-        }
-        .theme-switch input {
-            display:none;
-        }
-        .slider {
-            background-color: #4f6a85;
-            bottom: 0;
-            cursor: pointer;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        .slider:before {
-            background-color: #fff;
-            bottom: 4px;
-            content: "";
-            height: 16px;
-            left: 4px;
-            position: absolute;
-            transition: .4s;
-            width: 16px;
-            border-radius: 50%;
-        }
-        input:checked + .slider {
-            background-color: var(--cor-destaque);
-        }
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--cor-destaque);
-            object-fit: cover;
-            margin-bottom: 20px;
-            margin-top: 40px; /* Espaço para o botão */
-        }
-
-        .sidebar h2 {
-            font-family: 'Montserrat', sans-serif;
-            color: white;
-            border-bottom: 2px solid var(--cor-destaque);
-            padding-bottom: 5px;
-            margin-top: 30px;
-            text-align: center;
-            width: 100%;
-        }
-        
-        .contact-info a {
-            color: var(--cor-texto-sidebar);
-            display: block;
-            margin-bottom: 15px;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-info a:hover {
-            color: var(--cor-destaque);
-        }
-
-        .contact-info i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .skills-list span {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 8px 12px;
-            margin: 4px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-
-        /* --- Conteúdo Principal --- */
-        .main-content {
-            background-color: var(--cor-principal);
-            width: 65%;
-            padding: 50px;
-            transition: background-color 0.3s;
-        }
-
-        .main-content h1, .main-content h2, .main-content h3, .main-content h4 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--cor-texto-principal);
-            transition: color 0.3s;
-        }
-        
-        .main-content h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-
-        .main-content .titulo {
-            font-size: 1.5em;
-            color: var(--cor-destaque);
-            margin-top: 5px;
-            font-weight: 700;
-        }
-
-        .main-content h2 {
-            border-bottom: 2px solid var(--cor-destaque);
-            padding-bottom: 10px;
-            margin-top: 40px;
-        }
-
-        .experience-item {
-            margin-bottom: 30px;
-        }
-
-        .experience-item ul {
-            padding-left: 20px;
-            margin-top: 5px;
-        }
-        
-        /* --- Carrossel de Projetos (Swiper.js) --- */
-        .swiper {
-            width: 100%;
-            padding-bottom: 40px !important;
-        }
-        
-        .swiper-slide {
-            background: var(--cor-principal);
-            padding: 25px;
-            box-sizing: border-box;
-            border-radius: 8px;
-            box-shadow: var(--sombra-caixa);
-            border: 1px solid var(--cor-sidebar);
-            transition: background-color 0.3s, border 0.3s;
-        }
-
-        .swiper-slide h4, .swiper-slide p {
-            color: var(--cor-texto-principal);
-            transition: color 0.3s;
-        }
-        
-        .swiper-slide .tags span {
-            background: var(--cor-fundo); 
-            color: var(--cor-destaque); 
-            padding: 5px 10px; 
-            border-radius: 5px; 
-            font-size: 0.8em; 
-            margin-right: 5px;
-            transition: background-color 0.3s;
-        }
-
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: var(--cor-fundo); color: var(--cor-texto-principal); transition: background-color 0.3s, color 0.3s; }
+        .resume-container { max-width: 1200px; margin: 40px auto; display: flex; box-shadow: var(--sombra-caixa); border-radius: 10px; overflow: hidden; animation: fadeIn 1s ease-out; transition: box-shadow 0.3s; }
+        .sidebar { background-color: var(--cor-sidebar); color: var(--cor-texto-sidebar); width: 35%; padding: 40px; display: flex; flex-direction: column; align-items: center; transition: background-color 0.3s, color 0.3s; position: relative; }
+        .theme-switch-wrapper { display: flex; align-items: center; position: absolute; top: 20px; right: 20px; }
+        .theme-switch { display: inline-block; height: 24px; position: relative; width: 50px; }
+        .theme-switch input { display:none; }
+        .slider { background-color: #4f6a85; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; border-radius: 34px; }
+        .slider:before { background-color: #fff; bottom: 4px; content: ""; height: 16px; left: 4px; position: absolute; transition: .4s; width: 16px; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--cor-destaque); }
+        input:checked + .slider:before { transform: translateX(26px); }
+        .profile-pic { width: 150px; height: 150px; border-radius: 50%; border: 5px solid var(--cor-destaque); object-fit: cover; margin-bottom: 20px; margin-top: 40px; }
+        .sidebar h2 { font-family: 'Montserrat', sans-serif; color: white; border-bottom: 2px solid var(--cor-destaque); padding-bottom: 5px; margin-top: 30px; text-align: center; width: 100%; }
+        .contact-info a { color: var(--cor-texto-sidebar); display: block; margin-bottom: 15px; text-decoration: none; transition: color 0.3s; }
+        .contact-info a:hover { color: var(--cor-destaque); }
+        .contact-info i { margin-right: 10px; width: 20px; text-align: center; }
+        .skills-list span { display: inline-block; background-color: rgba(255, 255, 255, 0.1); padding: 8px 12px; margin: 4px; border-radius: 20px; font-size: 0.9em; }
+        .main-content { background-color: var(--cor-principal); width: 65%; padding: 50px; transition: background-color 0.3s; }
+        .main-content h1, .main-content h2, .main-content h3, .main-content h4 { font-family: 'Montserrat', sans-serif; color: var(--cor-texto-principal); transition: color 0.3s; }
+        .main-content h1 { font-size: 3em; margin: 0; }
+        .main-content .titulo { font-size: 1.5em; color: var(--cor-destaque); margin-top: 5px; font-weight: 700; }
+        .main-content h2 { border-bottom: 2px solid var(--cor-destaque); padding-bottom: 10px; margin-top: 40px; }
+        .experience-item { margin-bottom: 30px; }
+        .experience-item ul { padding-left: 20px; margin-top: 5px; }
+        .swiper { width: 100%; padding-bottom: 40px !important; }
+        .swiper-slide { background: var(--cor-principal); padding: 25px; box-sizing: border-box; border-radius: 8px; box-shadow: var(--sombra-caixa); border: 1px solid var(--cor-sidebar); transition: background-color 0.3s, border 0.3s; }
+        .swiper-slide h4, .swiper-slide p { color: var(--cor-texto-principal); transition: color 0.3s; }
+        .swiper-slide .tags span { background: var(--cor-fundo); color: var(--cor-destaque); padding: 5px 10px; border-radius: 5px; font-size: 0.8em; margin-right: 5px; transition: background-color 0.3s; }
         .swiper-button-next, .swiper-button-prev { color: var(--cor-destaque) !important; }
         .swiper-pagination-bullet-active { background-color: var(--cor-destaque) !important; }
-
-        /* --- Responsividade --- */
-        @media (max-width: 992px) {
-            .resume-container { flex-direction: column; margin: 0; }
-            .sidebar, .main-content { width: 100%; box-sizing: border-box; }
-            .theme-switch-wrapper { top: 15px; right: 15px; }
-            .profile-pic { margin-top: 60px; }
-        }
-
+        #python-feature { text-align: center; }
+        #python-feature button { background-color: var(--cor-destaque); color: white; border: none; padding: 12px 25px; font-family: 'Montserrat', sans-serif; font-size: 1em; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
+        #python-feature button:hover { background-color: #16a085; transform: translateY(-2px); }
+        #fact-display { margin-top: 20px; padding: 15px; min-height: 50px; border-left: 4px solid var(--cor-destaque); background-color: var(--cor-fundo); font-style: italic; border-radius: 0 5px 5px 0; text-align: left; }
+        @media (max-width: 992px) { .resume-container { flex-direction: column; margin: 0; } .sidebar, .main-content { width: 100%; box-sizing: border-box; } .theme-switch-wrapper { top: 15px; right: 15px; } .profile-pic { margin-top: 60px; } }
     </style>
 </head>
 <body>
 
     <div class="resume-container">
         <aside class="sidebar">
-        
             <div class="theme-switch-wrapper">
                 <label class="theme-switch" for="checkbox">
                     <input type="checkbox" id="checkbox" />
                     <div class="slider round"></div>
                 </label>
             </div>
-        
-            <img src="foto-perfil.jpg" alt="Foto de Perfil" class="profile-pic">
+
+            <img src="image/foto-perfil.PNG" alt="Foto de Perfil" class="profile-pic">
             
             <div class="contact-info">
                 <h2>Contato</h2>
@@ -281,14 +88,12 @@
                 <p><a href="https://www.linkedin.com/in/gabriel-suruagy-a42105261" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
                 <p><a href="#"><i class="fas fa-map-marker-alt"></i> Brasília, DF, Brasil</a></p>
             </div>
-
             <div class="sidebar-section">
                 <h2>Habilidades</h2>
                 <div class="skills-list">
                     <span>Power BI</span> <span>MicroStrategy</span> <span>Python</span> <span>Pandas & NumPy</span> <span>SQL</span> <span>PL/SQL</span> <span>Oracle</span> <span>Modelagem de Dados</span> <span>Full Stack</span> <span>DBA</span>
                 </div>
             </div>
-
             <div class="sidebar-section">
                 <h2>Formação</h2>
                 <p><strong>Pós-graduação em BI, Big Data e Data Science</strong><br>Anhanguera (2025)</p>
@@ -301,17 +106,14 @@
         <main class="main-content">
             <h1>Gabriel Suruagy</h1>
             <p class="titulo">Data Analyst & BI Specialist</p>
-
             <section id="resumo">
                 <h2>Resumo Profissional</h2>
                 <p>Analista de Dados com foco em transformar dados complexos em dashboards interativos e insights acionáveis. Proficiente em SQL e Python para manipulação, análise e garantia da qualidade de grandes volumes de dados, buscando ativamente oportunidades para aplicar técnicas de modelagem para resolver desafios de negócio.</p>
             </section>
-            
             <section id="experiencia">
                 <h2>Experiência Profissional</h2>
                 <div class="experience-item">
                     <h3>Exército Brasileiro</h3>
-                    
                     <h4>Oficial do Exército no Cargo de Administrador de Banco de Dados</h4>
                     <p><strong>Departamento-Geral do Pessoal - DGP</strong></p>
                     <p class="periodo">fevereiro de 2025 - Presente</p>
@@ -320,7 +122,6 @@
                         <li>Implementei rotinas de Data Quality e governança de dados, garantindo a integridade, acurácia e rastreabilidade das informações no banco de dados corporativo.</li>
                         <li>Liderei iniciativas de análise para identificar tendências e anomalias, gerando relatórios que serviram de base para o planejamento estratégico do departamento.</li>
                     </ul>
-                    
                     <h4>Analista de Banco de Dados Pleno</h4>
                     <p><strong>Centro de Desenvolvimento de Sistemas - CDS</strong></p>
                     <p class="periodo">fevereiro de 2022 - fevereiro de 2025</p>
@@ -331,31 +132,24 @@
                     </ul>
                 </div>
             </section>
-
             <section id="projetos">
                 <h2>Projetos de Destaque</h2>
                 <div class="swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <h4>Sistema de Automação para Processamento de Lotes do eSocial</h4>
-                            <p>Projeto pessoal para automatizar o fluxo de envio de eventos à API do eSocial, utilizando Python, Docker e PostgreSQL para orquestrar um pipeline completo.</p>
-                            <div class="tags"><span>Python</span><span>Docker</span><span>PostgreSQL</span><span>Automação</span><span>API</span></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <h4>Pipeline de Automação para Atos de Pensão (TCU)</h4>
-                            <p>Pipeline de dados em Python que automatiza 100% do processo de geração e envio de atos de pensão, extraindo dados de Oracle e consumindo APIs REST.</p>
-                            <div class="tags"><span>Python</span><span>Oracle</span><span>REST APIs</span><span>JSON</span><span>XSD</span></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <h4>Análise Preditiva de Evasão</h4>
-                            <p>Modelo de Machine Learning (Scikit-learn) para prever a probabilidade de um cliente cancelar um serviço, atingindo uma acurácia de 85% em dados públicos.</p>
-                            <div class="tags"><span>Data Science</span><span>Scikit-learn</span><span>Jupyter</span></div>
-                        </div>
+                        <div class="swiper-slide"><h4>Sistema de Automação para Processamento de Lotes do eSocial</h4><p>Projeto pessoal para automatizar o fluxo de envio de eventos à API do eSocial, utilizando Python, Docker e PostgreSQL para orquestrar um pipeline completo.</p><div class="tags"><span>Python</span><span>Docker</span><span>PostgreSQL</span><span>Automação</span><span>API</span></div></div>
+                        <div class="swiper-slide"><h4>Pipeline de Automação para Atos de Pensão (TCU)</h4><p>Pipeline de dados em Python que automatiza 100% do processo de geração e envio de atos de pensão, extraindo dados de Oracle e consumindo APIs REST.</p><div class="tags"><span>Python</span><span>Oracle</span><span>REST APIs</span><span>JSON</span><span>XSD</span></div></div>
+                        <div class="swiper-slide"><h4>Análise Preditiva de Evasão</h4><p>Modelo de Machine Learning (Scikit-learn) para prever a probabilidade de um cliente cancelar um serviço, atingindo uma acurácia de 85% em dados públicos.</p><div class="tags"><span>Data Science</span><span>Scikit-learn</span><span>Jupyter</span></div></div>
                     </div>
                     <div class="swiper-pagination"></div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
+            </section>
+            <section id="python-feature">
+                <h2>Recurso Dinâmico com Python</h2>
+                <p>Clique no botão abaixo para buscar uma curiosidade sobre dados em tempo real, usando uma API que criei com Python e Netlify Functions.</p>
+                <button id="fetch-fact-btn">Gerar Curiosidade!</button>
+                <div id="fact-display">Sua curiosidade aparecerá aqui...</div>
             </section>
         </main>
     </div>
@@ -364,55 +158,28 @@
 
     <script>
       // 1. Script do Carrossel (Swiper)
-      const swiper = new Swiper('.swiper', {
-        loop: true,
-        autoplay: {
-          delay: 2500, // Aumentei um pouco para dar tempo de ler
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      });
-
-      // ==================================
-      // ===== SCRIPT DO DARK MODE ADICIONADO ====
-      // ==================================
+      const swiper = new Swiper('.swiper', { loop: true, autoplay: { delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true, }, pagination: { el: '.swiper-pagination', clickable: true, }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', }, });
       // 2. Script do Modo Escuro
       const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
       const currentTheme = localStorage.getItem('theme');
-
-      // Verifica se há um tema salvo no armazenamento local
-      if (currentTheme) {
-          document.body.classList.add(currentTheme);
-        
-          if (currentTheme === 'dark-mode') {
-              toggleSwitch.checked = true;
-          }
-      }
-
-      // Função para trocar o tema
-      function switchTheme(e) {
-          if (e.target.checked) {
-              document.body.classList.add('dark-mode');
-              localStorage.setItem('theme', 'dark-mode'); // Salva a preferência
-          }
-          else {
-              document.body.classList.remove('dark-mode');
-              localStorage.setItem('theme', 'light-mode'); // Salva a preferência
-          }    
-      }
-
-      // Adiciona o "escutador" de eventos para o clique no botão
+      if (currentTheme) { document.body.classList.add(currentTheme); if (currentTheme === 'dark-mode') { toggleSwitch.checked = true; } }
+      function switchTheme(e) { if (e.target.checked) { document.body.classList.add('dark-mode'); localStorage.setItem('theme', 'dark-mode'); } else { document.body.classList.remove('dark-mode'); localStorage.setItem('theme', 'light-mode'); } }
       toggleSwitch.addEventListener('change', switchTheme, false);
-
+      // 3. Script para chamar a Função Python
+      const factButton = document.getElementById('fetch-fact-btn');
+      const factDisplay = document.getElementById('fact-display');
+      factButton.addEventListener('click', async () => {
+        factDisplay.textContent = 'Buscando uma curiosidade na nuvem...';
+        try {
+          const response = await fetch('/.netlify/functions/get_fact');
+          if (!response.ok) { throw new Error(`Erro na rede: ${response.status}`); }
+          const data = await response.json();
+          factDisplay.textContent = data.fact;
+        } catch (error) {
+          factDisplay.textContent = 'Oops! Não foi possível buscar a curiosidade. Tente novamente.';
+          console.error('Erro ao chamar a função:', error);
+        }
+      });
     </script>
-
 </body>
 </html>
