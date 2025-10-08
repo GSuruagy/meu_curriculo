@@ -4,15 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio | Gabriel Suruagy</title>
+
+    <meta name="description" content="Portfólio de Gabriel Suruagy, Data Analyst e BI Specialist com experiência em Python, SQL, Oracle e Business Intelligence.">
+    <meta name="keywords" content="Data Analyst, BI, Python, SQL, Portfolio, Gabriel Suruagy">
+    <meta property="og:title" content="Portfólio | Gabriel Suruagy">
+    <meta property="og:description" content="Conheça meus projetos e experiências em análise de dados e Business Intelligence.">
+    <meta property="og:image" content="image/foto-perfil.PNG"> 
+    <meta property="og:url" content="URL_DO_SEU_SITE_NETLIFY_AQUI"> 
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="image/favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* --- Variáveis de Customização --- */
         :root {
             --cor-sidebar: #2c3e50;
             --cor-principal: #ffffff;
@@ -21,6 +31,7 @@
             --cor-texto-sidebar: #ecf0f1;
             --cor-texto-principal: #34495e;
             --sombra-caixa: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --cor-borda: #dfe4ea;
         }
         body.dark-mode {
             --cor-sidebar: #1f2937;
@@ -29,13 +40,14 @@
             --cor-texto-sidebar: #d1d5db;
             --cor-texto-principal: #d1d5db;
             --sombra-caixa: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --cor-borda: #4b5563;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         html { scroll-behavior: smooth; }
         body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: var(--cor-fundo); color: var(--cor-texto-principal); transition: background-color 0.3s, color 0.3s; }
-        .resume-container { max-width: 1200px; margin: 40px auto; display: flex; box-shadow: var(--sombra-caixa); border-radius: 10px; overflow: hidden; animation: fadeIn 1s ease-out; transition: box-shadow 0.3s; }
+        [data-aos] { overflow-x: hidden; }
+        .resume-container { max-width: 1200px; margin: 40px auto; display: flex; box-shadow: var(--sombra-caixa); border-radius: 10px; overflow: hidden; }
         .sidebar { background-color: var(--cor-sidebar); color: var(--cor-texto-sidebar); width: 35%; padding: 40px; display: flex; flex-direction: column; align-items: center; transition: background-color 0.3s, color 0.3s; position: relative; }
-        .theme-switch-wrapper { display: flex; align-items: center; position: absolute; top: 20px; right: 20px; }
+        .theme-switch-wrapper { display: flex; align-items: center; position: absolute; top: 20px; right: 20px; z-index: 2; }
         .theme-switch { display: inline-block; height: 24px; position: relative; width: 50px; }
         .theme-switch input { display:none; }
         .slider { background-color: #4f6a85; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; border-radius: 34px; }
@@ -61,16 +73,19 @@
         .swiper-slide .tags span { background: var(--cor-fundo); color: var(--cor-destaque); padding: 5px 10px; border-radius: 5px; font-size: 0.8em; margin-right: 5px; transition: background-color 0.3s; }
         .swiper-button-next, .swiper-button-prev { color: var(--cor-destaque) !important; }
         .swiper-pagination-bullet-active { background-color: var(--cor-destaque) !important; }
-        #python-feature { text-align: center; }
-        #python-feature button { background-color: var(--cor-destaque); color: white; border: none; padding: 12px 25px; font-family: 'Montserrat', sans-serif; font-size: 1em; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
-        #python-feature button:hover { background-color: #16a085; transform: translateY(-2px); }
-        #fact-display { margin-top: 20px; padding: 15px; min-height: 50px; border-left: 4px solid var(--cor-destaque); background-color: var(--cor-fundo); font-style: italic; border-radius: 0 5px 5px 0; text-align: left; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid var(--cor-borda); background-color: var(--cor-fundo); color: var(--cor-texto-principal); font-family: 'Roboto', sans-serif; font-size: 1em; box-sizing: border-box; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--cor-destaque); box-shadow: 0 0 5px rgba(26, 188, 156, 0.5); }
+        #contact-form button { background-color: var(--cor-destaque); color: white; border: none; padding: 15px 30px; font-family: 'Montserrat', sans-serif; font-size: 1em; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; width: 100%; }
+        #contact-form button:hover { background-color: #16a085; transform: translateY(-2px); }
+        .hidden { display: none; }
         @media (max-width: 992px) { .resume-container { flex-direction: column; margin: 0; } .sidebar, .main-content { width: 100%; box-sizing: border-box; } .theme-switch-wrapper { top: 15px; right: 15px; } .profile-pic { margin-top: 60px; } }
     </style>
 </head>
 <body>
 
-    <div class="resume-container">
+    <div class="resume-container" data-aos="fade-up" data-aos-duration="800">
         <aside class="sidebar">
             <div class="theme-switch-wrapper">
                 <label class="theme-switch" for="checkbox">
@@ -78,9 +93,7 @@
                     <div class="slider round"></div>
                 </label>
             </div>
-
             <img src="image/foto-perfil.PNG" alt="Foto de Perfil" class="profile-pic">
-            
             <div class="contact-info">
                 <h2>Contato</h2>
                 <p><a href="mailto:gsuruagy17@gmail.com"><i class="fas fa-envelope"></i> gsuruagy17@gmail.com</a></p>
@@ -104,13 +117,15 @@
         </aside>
 
         <main class="main-content">
-            <h1>Gabriel Suruagy</h1>
-            <p class="titulo">Data Analyst & BI Specialist</p>
-            <section id="resumo">
+            <div data-aos="fade-left">
+                <h1>Gabriel Suruagy</h1>
+                <p class="titulo">Data Analyst & BI Specialist</p>
+            </div>
+            <section id="resumo" data-aos="fade-up" data-aos-delay="200">
                 <h2>Resumo Profissional</h2>
                 <p>Analista de Dados com foco em transformar dados complexos em dashboards interativos e insights acionáveis. Proficiente em SQL e Python para manipulação, análise e garantia da qualidade de grandes volumes de dados, buscando ativamente oportunidades para aplicar técnicas de modelagem para resolver desafios de negócio.</p>
             </section>
-            <section id="experiencia">
+            <section id="experiencia" data-aos="fade-up">
                 <h2>Experiência Profissional</h2>
                 <div class="experience-item">
                     <h3>Exército Brasileiro</h3>
@@ -132,7 +147,7 @@
                     </ul>
                 </div>
             </section>
-            <section id="projetos">
+            <section id="projetos" data-aos="fade-up">
                 <h2>Projetos de Destaque</h2>
                 <div class="swiper">
                     <div class="swiper-wrapper">
@@ -145,41 +160,51 @@
                     <div class="swiper-button-next"></div>
                 </div>
             </section>
-            <section id="python-feature">
-                <h2>Recurso Dinâmico com Python</h2>
-                <p>Clique no botão abaixo para buscar uma curiosidade sobre dados em tempo real, usando uma API que criei com Python e Netlify Functions.</p>
-                <button id="fetch-fact-btn">Gerar Curiosidade!</button>
-                <div id="fact-display">Sua curiosidade aparecerá aqui...</div>
+            <section id="contato" data-aos="fade-up">
+                <h2>Entre em Contato</h2>
+                <form id="contact-form" name="contato" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contato" />
+                    <p class="hidden">
+                        <label>Não preencha isto se você for humano: <input name="bot-field" /></label>
+                    </p>
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
             </section>
         </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-      // 1. Script do Carrossel (Swiper)
+      // 1. Inicializa as Animações de Scroll
+      AOS.init({
+        once: true,
+        duration: 600,
+      });
+
+      // 2. Script do Carrossel (Swiper)
       const swiper = new Swiper('.swiper', { loop: true, autoplay: { delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true, }, pagination: { el: '.swiper-pagination', clickable: true, }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', }, });
-      // 2. Script do Modo Escuro
+      
+      // 3. Script do Modo Escuro
       const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
       const currentTheme = localStorage.getItem('theme');
       if (currentTheme) { document.body.classList.add(currentTheme); if (currentTheme === 'dark-mode') { toggleSwitch.checked = true; } }
-      function switchTheme(e) { if (e.target.checked) { document.body.classList.add('dark-mode'); localStorage.setItem('theme', 'dark-mode'); } else { document.body.classList.remove('dark-mode'); localStorage.setItem('theme', 'light-mode'); } }
+      function switchTheme(e) { if (e.g.checked) { document.body.classList.add('dark-mode'); localStorage.setItem('theme', 'dark-mode'); } else { document.body.classList.remove('dark-mode'); localStorage.setItem('theme', 'light-mode'); } }
       toggleSwitch.addEventListener('change', switchTheme, false);
-      // 3. Script para chamar a Função Python
-      const factButton = document.getElementById('fetch-fact-btn');
-      const factDisplay = document.getElementById('fact-display');
-      factButton.addEventListener('click', async () => {
-        factDisplay.textContent = 'Buscando uma curiosidade na nuvem...';
-        try {
-          const response = await fetch('/.netlify/functions/get_fact');
-          if (!response.ok) { throw new Error(`Erro na rede: ${response.status}`); }
-          const data = await response.json();
-          factDisplay.textContent = data.fact;
-        } catch (error) {
-          factDisplay.textContent = 'Oops! Não foi possível buscar a curiosidade. Tente novamente.';
-          console.error('Erro ao chamar a função:', error);
-        }
-      });
+      
     </script>
 </body>
 </html>
