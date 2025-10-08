@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio | Gabriel Suruagy</title>
-
+    
     <meta name="description" content="Portfólio de Gabriel Suruagy, Data Analyst e BI Specialist com experiência em Python, SQL, Oracle e Business Intelligence.">
     <meta name="keywords" content="Data Analyst, BI, Python, SQL, Portfolio, Gabriel Suruagy">
     <meta property="og:title" content="Portfólio | Gabriel Suruagy">
@@ -162,7 +162,7 @@
             </section>
             <section id="contato" data-aos="fade-up">
                 <h2>Entre em Contato</h2>
-                <form id="contact-form" name="contato" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <form id="contact-form" name="contato" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/obrigado/">
                     <input type="hidden" name="form-name" value="contato" />
                     <p class="hidden">
                         <label>Não preencha isto se você for humano: <input name="bot-field" /></label>
@@ -189,22 +189,13 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-      // 1. Inicializa as Animações de Scroll
-      AOS.init({
-        once: true,
-        duration: 600,
-      });
-
-      // 2. Script do Carrossel (Swiper)
+      AOS.init({ once: true, duration: 600 });
       const swiper = new Swiper('.swiper', { loop: true, autoplay: { delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true, }, pagination: { el: '.swiper-pagination', clickable: true, }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', }, });
-      
-      // 3. Script do Modo Escuro
       const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
       const currentTheme = localStorage.getItem('theme');
       if (currentTheme) { document.body.classList.add(currentTheme); if (currentTheme === 'dark-mode') { toggleSwitch.checked = true; } }
-      function switchTheme(e) { if (e.g.checked) { document.body.classList.add('dark-mode'); localStorage.setItem('theme', 'dark-mode'); } else { document.body.classList.remove('dark-mode'); localStorage.setItem('theme', 'light-mode'); } }
+      function switchTheme(e) { if (e.target.checked) { document.body.classList.add('dark-mode'); localStorage.setItem('theme', 'dark-mode'); } else { document.body.classList.remove('dark-mode'); localStorage.setItem('theme', 'light-mode'); } }
       toggleSwitch.addEventListener('change', switchTheme, false);
-      
     </script>
 </body>
 </html>
